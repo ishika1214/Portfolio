@@ -50,7 +50,7 @@ const SocialLinks = () => {
       ),
       icon: <BsFillPersonLinesFill size={30} />,
       name: "Resume",
-      href: "/resume.pdf",
+      href: "https://ishika1214.github.io/Portfolio/resume.pdf",
       style: "rounded-br-md",
       download: true,
     },
