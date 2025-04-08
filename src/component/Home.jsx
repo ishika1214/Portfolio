@@ -15,7 +15,7 @@ const Home = () => {
             I'm a full stack developer
           </h2>
           <p className="text-gray-400 py-4 max-w-md">
-            I have a 1 year of experience building and designing software.
+            I have a 2 year of experience building and designing software.
             Currently , I love to work on web application using technologies
             like React, Redux,Next js and nestjs.
           </p>
