@@ -10,12 +10,14 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Home />
-      <About />
-      <Portfolio />
-      <Skills/>
-      <Contact/>
-      <SocialLinks />
+      <div className="min-h-[calc(100vh-5rem)]">
+        <Home />
+        <About />
+        <Portfolio />
+        <Skills />
+        <Contact />
+        <SocialLinks />
+      </div>
     </div>
   );
 }

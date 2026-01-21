@@ -1,6 +1,7 @@
 import React from "react";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
-import {Link} from "react-scroll"
+import { Link } from "react-scroll";
+import wave from "../assets/wave.png";
 const Home = () => {
   return (
     <div
@@ -10,17 +11,32 @@ const Home = () => {
       <div className="max-w-screen-lg mx-auto flex flex-col items-center justify-center h-full px-4 md:flex-row">
         <div className="flex flex-col justify-center h-full">
           <p className="text-rose-700 font-bold">Hii , My name is </p>
-          <p className="text-3xl sm:text-5xl font-bold text-[#ccd6f6]">Ishika Kumari</p>
+
+          <div className="flex items-center gap-5">
+            <p className="text-3xl sm:text-5xl font-bold text-[#ccd6f6]">
+              Ishika Kumari
+            </p>
+            <img
+              src={wave}
+              alt="wave"
+              className="w-[45px] h-[45px] origin-bottom-right animate-wave"
+            />
+          </div>
+
           <h2 className="text-4xl sm:text-7xl font-bold text-gray-400">
             I'm a full stack developer
           </h2>
           <p className="text-gray-400 py-4 max-w-md">
-            I have a 2 year of experience building and designing software.
-            Currently , I love to work on web application using technologies
+            I have a 3 year of experience building and designing software.I love to work on web application using technologies
             like React, Redux,Next js and nestjs.
           </p>
           <div>
-            <Link to="portfolio" smooth duration={500} className=" group text-white w-fit px-6 py-3 my-2 flex items-center rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 cursor-pointer ">
+            <Link
+              to="portfolio"
+              smooth
+              duration={500}
+              className=" group text-white w-fit px-6 py-3 my-2 flex items-center rounded-md bg-gradient-to-r from-cyan-500 to-blue-500 cursor-pointer z-100"
+            >
               View Work
               <span className="group-hover:rotate-90 duration-300">
                 <MdOutlineKeyboardArrowRight size={25} className="ml-1" />

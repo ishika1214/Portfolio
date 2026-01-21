@@ -26,7 +26,7 @@ const Navbar = () => {
     },
   ];
   return (
-    <div className="flex justify-between items-center  w-full h-20 text-white fixed bg-black px-4">
+    <div className="flex justify-between items-center z-10 w-full h-20 text-white fixed bg-black px-4">
       <div>
         <h1 className="text-5xl font-signature ml-2 text-rose-700">Ishika</h1>
       </div>
