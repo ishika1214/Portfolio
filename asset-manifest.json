@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Portfolio/static/css/main.045f152f.css",
-    "main.js": "/Portfolio/static/js/main.05681618.js",
+    "main.css": "/Portfolio/static/css/main.4e1838a5.css",
+    "main.js": "/Portfolio/static/js/main.1631de69.js",
     "static/media/prisma1.png": "/Portfolio/static/media/prisma1.fc571c58d43376eb2ef6.png",
     "static/media/reactParallax.jpg": "/Portfolio/static/media/reactParallax.6f0d02a0def925fc9d7f.jpg",
     "static/media/reactWeather.jpg": "/Portfolio/static/media/reactWeather.a1988356c4f5a620716e.jpg",
@@ -11,6 +11,7 @@
     "static/media/postgres.png": "/Portfolio/static/media/postgres.4a8c66c90ba3b5e27f7c.png",
     "static/media/arrayDestruct.jpg": "/Portfolio/static/media/arrayDestruct.84671dfd109d4de76bae.jpg",
     "static/media/tic-Tac.jpg": "/Portfolio/static/media/tic-Tac.4ad9904a5b13f99051b1.jpg",
+    "static/media/wave.png": "/Portfolio/static/media/wave.dee648757c0af30379a3.png",
     "static/media/Crud.jpg": "/Portfolio/static/media/Crud.2a6075e7b67c9ef6543c.jpg",
     "static/media/redux1.png": "/Portfolio/static/media/redux1.b426d97de12d4dab1c06.png",
     "static/media/react.png": "/Portfolio/static/media/react.0cf951a69d8e58f83f9d.png",
@@ -21,11 +22,11 @@
     "static/media/css.png": "/Portfolio/static/media/css.69a82c2d9e45c933a9cb.png",
     "static/media/javascript.png": "/Portfolio/static/media/javascript.1ccd6ef9bb1f9c84ef00.png",
     "index.html": "/Portfolio/index.html",
-    "main.045f152f.css.map": "/Portfolio/static/css/main.045f152f.css.map",
-    "main.05681618.js.map": "/Portfolio/static/js/main.05681618.js.map"
+    "main.4e1838a5.css.map": "/Portfolio/static/css/main.4e1838a5.css.map",
+    "main.1631de69.js.map": "/Portfolio/static/js/main.1631de69.js.map"
   },
   "entrypoints": [
-    "static/css/main.045f152f.css",
-    "static/js/main.05681618.js"
+    "static/css/main.4e1838a5.css",
+    "static/js/main.1631de69.js"
   ]
 }
