@@ -27,21 +27,7 @@ import mindSpace4 from "../assets/mindSpace/mindSpace4.png";
 import mindSpace5 from "../assets/mindSpace/mindSpace5.png";
 import mindSpace6 from "../assets/mindSpace/mindSpace6.png";
 
-const Portfolio = () => {
-  const scrollRefs = React.useRef({});
-
-  const scrollGallery = (id, direction) => {
-    const container = scrollRefs.current[id];
-    if (!container) return;
-
-    const amount = container.clientWidth * 0.9;
-    container.scrollBy({
-      left: direction === "left" ? -amount : amount,
-      behavior: "smooth",
-    });
-  };
-
-  const Projects = [
+const Projects = [
     {
       id: 1,
       title : "Task Manager",
@@ -86,7 +72,58 @@ const Portfolio = () => {
     //   href: "https://ishika1214.github.io/my-hangman1/",
     //   code: "https://github.com/ishika1214/my-hangman1",
     // },
-  ];
+];
+
+const Portfolio = () => {
+  const [currentImageIndex, setCurrentImageIndex] = React.useState({});
+  const [isAnimating, setIsAnimating] = React.useState({});
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // md breakpoint
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const navigateImage = (id, direction) => {
+    const project = Projects.find(p => p.id === id);
+    if (!project) return;
+
+    const currentIndex = currentImageIndex[id] || 0;
+    const totalImages = project.images.length;
+    const step = isMobile ? 1 : 2; // Move 1 image on mobile, 2 on desktop
+    
+    // Set animating state to fade out
+    setIsAnimating(prev => ({ ...prev, [id]: true }));
+    
+    // After fade out, update the index
+    setTimeout(() => {
+      if (direction === "left") {
+        // Move back by step, or wrap to the end
+        const newIndex = currentIndex >= step ? currentIndex - step : Math.max(0, totalImages - step);
+        setCurrentImageIndex(prev => ({
+          ...prev,
+          [id]: newIndex
+        }));
+      } else {
+        // Move forward by step, or wrap to the beginning
+        const newIndex = currentIndex + step < totalImages ? currentIndex + step : 0;
+        setCurrentImageIndex(prev => ({
+          ...prev,
+          [id]: newIndex
+        }));
+      }
+      
+      // Fade in the new images
+      setTimeout(() => {
+        setIsAnimating(prev => ({ ...prev, [id]: false }));
+      }, 50);
+    }, 350);
+  };
 
   return (
     <div
@@ -100,8 +137,8 @@ const Portfolio = () => {
           </p>
        
           <p className="mt-4 text-gray-300">
-            A selection of my recent work. Swipe or scroll through the images in
-            each project to explore more views.
+            A selection of my recent work. Use the navigation buttons to explore
+            different views of each project.
           </p>
         </div>
 
@@ -112,48 +149,60 @@ const Portfolio = () => {
               className="group rounded-3xl bg-white/5 border border-white/10 shadow-[0_18px_60px_rgba(0,0,0,0.7)] backdrop-blur-xl hover:shadow-[0_18px_60px_rgba(225,29,72,0.3)] transition-all duration-300 flex flex-col overflow-hidden"
             >
               {/* Image gallery with arrows */}
-              <div className="relative bg-black/40">
-                <div
-                  ref={(el) => {
-                    if (el) scrollRefs.current[item.id] = el;
-                  }}
-                  className="project-gallery flex gap-4 overflow-x-auto pb-4 pt-4 px-4 scroll-smooth snap-x snap-mandatory"
-                >
-                  {item.images.map((image, index) => (
-                    <img
-                      key={index}
-                      src={image}
-                      alt={`${item.title} screenshot ${index + 1}`}
-                      className="h-52 sm:h-56 md:h-64 lg:h-72 w-64 sm:w-72 md:w-80 lg:w-96 object-cover rounded-lg flex-shrink-0 snap-center border border-gray-800 transition-transform duration-300 hover:scale-[1.03]"
-                    />
-                  ))}
+              <div className="relative bg-black/40 overflow-hidden">
+                <div className="flex gap-4 pb-4 pt-4 px-4 justify-center items-center relative">
+                  {(() => {
+                    const startIndex = currentImageIndex[item.id] || 0;
+                    const totalImages = item.images.length;
+                    const secondIndex = (startIndex + 1) % totalImages;
+                    const imagesToShow = [
+                      item.images[startIndex],
+                      item.images[secondIndex]
+                    ];
+                    const animating = isAnimating[item.id];
+                    return imagesToShow.map((image, idx) => (
+                      <div
+                        key={`${item.id}-${startIndex}-${idx}`}
+                        className={`relative h-52 sm:h-56 md:h-64 lg:h-72 w-64 sm:w-72 md:w-80 lg:w-96 flex-shrink-0 transition-all duration-500 ease-in-out ${
+                          animating 
+                            ? 'opacity-0 scale-95 -translate-x-2' 
+                            : 'opacity-100 scale-100 translate-x-0'
+                        } ${idx === 1 ? 'hidden md:block' : ''}`}
+                        style={{
+                          transitionDelay: `${idx * 80}ms`
+                        }}
+                      >
+                        <img
+                          src={image}
+                          alt={`${item.title} screenshot ${idx === 0 ? startIndex + 1 : secondIndex + 1}`}
+                          className="h-full w-full object-cover rounded-lg border border-gray-800 transition-transform duration-300 hover:scale-[1.03]"
+                        />
+                      </div>
+                    ));
+                  })()}
                 </div>
 
                 {/* left / right arrows */}
                 <button
                   type="button"
-                  onClick={() => scrollGallery(item.id, "left")}
+                  onClick={() => navigateImage(item.id, "left")}
                   className="absolute inset-y-0 left-2 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
-                  aria-label="Scroll left"
+                  aria-label="Previous images"
                 >
-                  <span className="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center text-sm sm:text-base shadow-lg shadow-black/40 border border-gray-700 hover:border-rose-500 transition">
+                  <span className="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-rose-600/90 hover:bg-rose-700 text-white flex items-center justify-center text-sm sm:text-base shadow-lg shadow-rose-900/50 border border-rose-500/50 hover:border-rose-400 transition">
                     &#10094;
                   </span>
                 </button>
                 <button
                   type="button"
-                  onClick={() => scrollGallery(item.id, "right")}
+                  onClick={() => navigateImage(item.id, "right")}
                   className="absolute inset-y-0 right-2 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
-                  aria-label="Scroll right"
+                  aria-label="Next images"
                 >
-                  <span className="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center text-sm sm:text-base shadow-lg shadow-black/40 border border-gray-700 hover:border-rose-500 transition">
+                  <span className="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-rose-600/90 hover:bg-rose-700 text-white flex items-center justify-center text-sm sm:text-base shadow-lg shadow-rose-900/50 border border-rose-500/50 hover:border-rose-400 transition">
                     &#10095;
                   </span>
                 </button>
-
-                {/* gradient edges for nicer scroll appearance */}
-                <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-gray-900 to-transparent" />
-                <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-gray-900 to-transparent" />
               </div>
 
               {/* Content */}
