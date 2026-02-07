@@ -1,5 +1,4 @@
 import React from "react";
-
 import html from "../assets/html.png";
 import css from "../assets/css.png";
 import javascript from "../assets/javascript.png";
@@ -96,9 +95,10 @@ const Skills = () => {
     >
       <div className="max-w-screen-lg mx-auto p-4 flex flex-col justify-center w-full md:h-full text-white">
         <div>
-          <p className="text-4xl font-bold border-b-2 border-rose-700 p-2 inline">
-            Experience
+          <p className="text-2xl font-semibold tracking-[0.3em] text-rose-400 uppercase mb-2">
+            Skills
           </p>
+       
           <p className="py-6">These are the technologies I've worked with</p>
         </div>
 

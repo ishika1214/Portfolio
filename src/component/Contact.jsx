@@ -1,5 +1,4 @@
 import React from "react";
-
 const Contact = () => {
   return (
     <div
@@ -8,9 +7,12 @@ const Contact = () => {
     >
       <div className="flex flex-col p-4 justify-center max-w-screen-lg mx-auto h-full">
         <div className="pb-8">
-          <p className="text-4xl font-bold inline border-b-2 border-rose-700">
+          <p className="text-2xl font-semibold tracking-[0.3em] text-rose-400 uppercase mb-2">
             Contact
           </p>
+          {/* <p className="text-4xl font-bold inline border-b-2 border-rose-700">
+            Contact
+          </p> */}
           <p className="py-6">Submit the form below to get in touch with me</p>
         </div>
         <div className="flex justify-center items-center">
