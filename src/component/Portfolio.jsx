@@ -1,14 +1,4 @@
-import React from "react";
-import arrDestruct from "../assets/portfolio/arrayDestruct.jpg";
-import TicTac from "../assets/portfolio/tic-Tac.jpg";
-import hangman from "../assets/portfolio/hangman.jpg";
-import reactParallax from "../assets/portfolio/reactParallax.jpg";
-import reactSmooth from "../assets/portfolio/reactSmooth.jpg";
-import reactWeather from "../assets/portfolio/reactWeather.jpg";
-import reactCrud from "../assets/portfolio/Crud.jpg";
-import navbar from "../assets/portfolio/navbar.jpg";
-import installNode from "../assets/portfolio/installNode.jpg";
-import useState from "../assets/portfolio/usestate.jpg";
+import React, { useEffect, useState } from "react";
 
 // Task Manager images
 import taskManager1 from "../assets/taskManager/taskmanager1.png";
@@ -75,11 +65,13 @@ const Projects = [
 ];
 
 const Portfolio = () => {
-  const [currentImageIndex, setCurrentImageIndex] = React.useState({});
-  const [isAnimating, setIsAnimating] = React.useState({});
-  const [isMobile, setIsMobile] = React.useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState({});
+  const [isAnimating, setIsAnimating] = useState({});
+  const [isMobile, setIsMobile] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState(null);
+  const [lightboxProject, setLightboxProject] = useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768); // md breakpoint
     };
@@ -88,6 +80,46 @@ const Portfolio = () => {
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && lightboxImage) {
+        setLightboxImage(null);
+        setLightboxProject(null);
+      }
+    };
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [lightboxImage]);
+
+  const openLightbox = (image, project, imageIndex) => {
+    setLightboxImage({ src: image, index: imageIndex });
+    setLightboxProject(project);
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
+    setLightboxProject(null);
+  };
+
+  const navigateLightbox = (direction) => {
+    if (!lightboxImage || !lightboxProject) return;
+    
+    const currentIndex = lightboxImage.index;
+    const totalImages = lightboxProject.images.length;
+    
+    let newIndex;
+    if (direction === "left") {
+      newIndex = currentIndex > 0 ? currentIndex - 1 : totalImages - 1;
+    } else {
+      newIndex = currentIndex < totalImages - 1 ? currentIndex + 1 : 0;
+    }
+    
+    setLightboxImage({
+      src: lightboxProject.images[newIndex],
+      index: newIndex
+    });
+  };
 
   const navigateImage = (id, direction) => {
     const project = Projects.find(p => p.id === id);
@@ -131,7 +163,7 @@ const Portfolio = () => {
       className="bg-gradient-to-b from-black to-gray-800 w-full text-white pb-16"
     >
       <div className="max-w-screen-lg px-4 mx-auto flex flex-col justify-center w-full">
-        <div className="pb-10">
+        <div className="pb-20">
           <p className="text-2xl font-semibold tracking-[0.3em] text-rose-400 uppercase mb-2">
             Projects
           </p>
@@ -142,11 +174,11 @@ const Portfolio = () => {
           </p>
         </div>
 
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-20">
           {Projects.map((item) => (
             <article
               key={item.id}
-              className="group rounded-3xl bg-white/5 border border-white/10 shadow-[0_18px_60px_rgba(0,0,0,0.7)] backdrop-blur-xl hover:shadow-[0_18px_60px_rgba(225,29,72,0.3)] transition-all duration-300 flex flex-col overflow-hidden"
+              className="group rounded-3xl bg-white/5 backdrop-blur-xl hover:shadow-[0_18px_60px_rgba(225,29,72,0.3)] transition-all duration-300 flex flex-col overflow-hidden"
             >
               {/* Image gallery with arrows */}
               <div className="relative bg-black/40 overflow-hidden">
@@ -160,25 +192,29 @@ const Portfolio = () => {
                       item.images[secondIndex]
                     ];
                     const animating = isAnimating[item.id];
-                    return imagesToShow.map((image, idx) => (
-                      <div
-                        key={`${item.id}-${startIndex}-${idx}`}
-                        className={`relative h-52 sm:h-56 md:h-64 lg:h-72 w-64 sm:w-72 md:w-80 lg:w-96 flex-shrink-0 transition-all duration-500 ease-in-out ${
-                          animating 
-                            ? 'opacity-0 scale-95 -translate-x-2' 
-                            : 'opacity-100 scale-100 translate-x-0'
-                        } ${idx === 1 ? 'hidden md:block' : ''}`}
-                        style={{
-                          transitionDelay: `${idx * 80}ms`
-                        }}
-                      >
-                        <img
-                          src={image}
-                          alt={`${item.title} screenshot ${idx === 0 ? startIndex + 1 : secondIndex + 1}`}
-                          className="h-full w-full object-cover rounded-lg border border-gray-800 transition-transform duration-300 hover:scale-[1.03]"
-                        />
-                      </div>
-                    ));
+                    return imagesToShow.map((image, idx) => {
+                      const actualIndex = idx === 0 ? startIndex : secondIndex;
+                      return (
+                        <div
+                          key={`${item.id}-${startIndex}-${idx}`}
+                          className={`relative h-52 sm:h-56 md:h-64 lg:h-72 w-64 sm:w-72 md:w-80 lg:w-96 flex-shrink-0 transition-all duration-500 ease-in-out cursor-pointer ${
+                            animating 
+                              ? 'opacity-0 scale-95 -translate-x-2' 
+                              : 'opacity-100 scale-100 translate-x-0'
+                          } ${idx === 1 ? 'hidden md:block' : ''}`}
+                          style={{
+                            transitionDelay: `${idx * 80}ms`
+                          }}
+                          onClick={() => openLightbox(image, item, actualIndex)}
+                        >
+                          <img
+                            src={image}
+                            alt={`${item.title} screenshot ${actualIndex + 1}`}
+                            className="h-full w-full object-cover rounded-lg border border-gray-800 transition-transform duration-300 hover:scale-[1.05]"
+                          />
+                        </div>
+                      );
+                    });
                   })()}
                 </div>
 
@@ -237,6 +273,62 @@ const Portfolio = () => {
           ))}
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {lightboxImage && lightboxProject && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm animate-fade-in"
+          onClick={closeLightbox}
+        >
+          {/* Close button */}
+          <button
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 z-50 h-10 w-10 rounded-full bg-rose-600/90 hover:bg-rose-700 text-white flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110"
+            aria-label="Close lightbox"
+          >
+            <span className="text-xl font-bold">×</span>
+          </button>
+
+          {/* Navigation buttons */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              navigateLightbox("left");
+            }}
+            className="absolute left-4 h-12 w-12 rounded-full bg-rose-600/90 hover:bg-rose-700 text-white flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 z-40"
+            aria-label="Previous image"
+          >
+            <span className="text-2xl">&#10094;</span>
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              navigateLightbox("right");
+            }}
+            className="absolute right-4 h-12 w-12 rounded-full bg-rose-600/90 hover:bg-rose-700 text-white flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 z-40"
+            aria-label="Next image"
+          >
+            <span className="text-2xl">&#10095;</span>
+          </button>
+
+          {/* Image container */}
+          <div
+            className="relative max-w-7xl max-h-[90vh] mx-4 px-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={lightboxImage.src}
+              alt={`${lightboxProject.title} screenshot ${lightboxImage.index + 1}`}
+              className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl animate-scale-in"
+            />
+            
+            {/* Image counter */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 px-4 py-2 rounded-full text-white text-sm">
+              {lightboxImage.index + 1} / {lightboxProject.images.length}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
