@@ -1,15 +1,23 @@
 {
   "files": {
-    "main.css": "/Portfolio/static/css/main.73723b7a.css",
-    "main.js": "/Portfolio/static/js/main.a94e2f0c.js",
+    "main.css": "/Portfolio/static/css/main.a08ad5cc.css",
+    "main.js": "/Portfolio/static/js/main.14d06f8f.js",
     "static/media/mindSpace3.png": "/Portfolio/static/media/mindSpace3.a0c46b28d54709302ea6.png",
     "static/media/taskmanager1.png": "/Portfolio/static/media/taskmanager1.037cb7f94395043db969.png",
+    "static/media/summarize1.png": "/Portfolio/static/media/summarize1.70d44416579afe9d4a06.png",
+    "static/media/summarize.png": "/Portfolio/static/media/summarize.6f5c6ad5066c0b4554b9.png",
     "static/media/taskmanager2.png": "/Portfolio/static/media/taskmanager2.9340eea9139a66ae9c5e.png",
+    "static/media/professionalRewrite.png": "/Portfolio/static/media/professionalRewrite.bc5c2b0a4c8199e3c215.png",
     "static/media/prisma1.png": "/Portfolio/static/media/prisma1.fc571c58d43376eb2ef6.png",
+    "static/media/LandingPage.png": "/Portfolio/static/media/LandingPage.018878a5c48b83f2a49a.png",
+    "static/media/dashboard.png": "/Portfolio/static/media/dashboard.8284f0f04a0be73156f5.png",
+    "static/media/Diary.png": "/Portfolio/static/media/Diary.a4462f6f120c476f3164.png",
     "static/media/taskmanager4.png": "/Portfolio/static/media/taskmanager4.92c9eab5ff0f61780d8a.png",
     "static/media/mindSpace4.png": "/Portfolio/static/media/mindSpace4.e816fa33e73e52f99f87.png",
     "static/media/mindSpace2.png": "/Portfolio/static/media/mindSpace2.8621503c55121c135e8e.png",
+    "static/media/AI-Companion.png": "/Portfolio/static/media/AI-Companion.ad2f6dbb08d5a39450aa.png",
     "static/media/taskmanager3.png": "/Portfolio/static/media/taskmanager3.9b8cab4a7593580e96aa.png",
+    "static/media/tags.png": "/Portfolio/static/media/tags.cfe602dd3c331faee786.png",
     "static/media/mindSpace6.png": "/Portfolio/static/media/mindSpace6.48f14a36c62d601d1a2b.png",
     "static/media/taskmanager5.png": "/Portfolio/static/media/taskmanager5.37b82d49992b30090f35.png",
     "static/media/mindSpace1.png": "/Portfolio/static/media/mindSpace1.8e80004725a2cca91f31.png",
@@ -28,11 +36,11 @@
     "static/media/css.png": "/Portfolio/static/media/css.69a82c2d9e45c933a9cb.png",
     "static/media/javascript.png": "/Portfolio/static/media/javascript.1ccd6ef9bb1f9c84ef00.png",
     "index.html": "/Portfolio/index.html",
-    "main.73723b7a.css.map": "/Portfolio/static/css/main.73723b7a.css.map",
-    "main.a94e2f0c.js.map": "/Portfolio/static/js/main.a94e2f0c.js.map"
+    "main.a08ad5cc.css.map": "/Portfolio/static/css/main.a08ad5cc.css.map",
+    "main.14d06f8f.js.map": "/Portfolio/static/js/main.14d06f8f.js.map"
   },
   "entrypoints": [
-    "static/css/main.73723b7a.css",
-    "static/js/main.a94e2f0c.js"
+    "static/css/main.a08ad5cc.css",
+    "static/js/main.14d06f8f.js"
   ]
 }
