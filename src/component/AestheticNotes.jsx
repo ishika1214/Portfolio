@@ -210,7 +210,7 @@ const AestheticNotes = ({ onBack }) => {
           <span className="text-rose-500">future of writing?</span>
         </h2>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="https://ishika1214.github.io/Aesthetic-Notes/" target="_blank" rel="noreferrer" className="px-10 py-4 rounded-full bg-rose-600 hover:bg-rose-700 text-white font-medium transition-all shadow-lg shadow-rose-900/40">
+          <a href="https://aesthetic-notes-git-devlop-ishika1214s-projects.vercel.app/" target="_blank" rel="noreferrer" className="px-10 py-4 rounded-full bg-rose-600 hover:bg-rose-700 text-white font-medium transition-all shadow-lg shadow-rose-900/40">
             Launch App
           </a>
           <button onClick={onBack} className="px-10 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 font-medium transition-all">

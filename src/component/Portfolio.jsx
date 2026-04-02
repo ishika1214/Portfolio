@@ -30,8 +30,8 @@ const Projects = [
       title : "Aesthetic Notes",
       description : "An immersive, AI-enhanced writing studio designed for creativity, clarity, and flow. Deeply integrated with Google's Gemini AI for summarization and insights.",
       images : [aestheticLanding, aestheticDashboard, aestheticSummarize, aestheticAI, aestheticDiary],
-      href : "https://ishika1214.github.io/Aesthetic-Notes/",
-      code : "https://github.com/ishika1214/Aesthetic-Notes",
+      href : "https://aesthetic-notes-git-devlop-ishika1214s-projects.vercel.app/",
+      code : "https://github.com/ishika1214/AestheticNotes-Backend",
       isCaseStudy: true,
       caseStudyId: 'aesthetic-notes'
     },
