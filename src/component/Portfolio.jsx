@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
 
+// Aesthetic Notes images
+import aestheticLanding from "../assets/aestheticNotes/LandingPage.png";
+import aestheticDashboard from "../assets/aestheticNotes/dashboard.png";
+import aestheticSummarize from "../assets/aestheticNotes/summarize.png";
+import aestheticAI from "../assets/aestheticNotes/AI-Companion.png";
+import aestheticDiary from "../assets/aestheticNotes/Diary.png";
+
 // Task Manager images
 import taskManager1 from "../assets/taskManager/taskmanager1.png";
 import taskManager2 from "../assets/taskManager/taskmanager2.png";
@@ -18,6 +25,16 @@ import mindSpace5 from "../assets/mindSpace/mindSpace5.png";
 import mindSpace6 from "../assets/mindSpace/mindSpace6.png";
 
 const Projects = [
+    {
+      id: 3,
+      title : "Aesthetic Notes",
+      description : "An immersive, AI-enhanced writing studio designed for creativity, clarity, and flow. Deeply integrated with Google's Gemini AI for summarization and insights.",
+      images : [aestheticLanding, aestheticDashboard, aestheticSummarize, aestheticAI, aestheticDiary],
+      href : "https://ishika1214.github.io/Aesthetic-Notes/",
+      code : "https://github.com/ishika1214/Aesthetic-Notes",
+      isCaseStudy: true,
+      caseStudyId: 'aesthetic-notes'
+    },
     {
       id: 1,
       title : "Task Manager",
@@ -64,7 +81,7 @@ const Projects = [
     // },
 ];
 
-const Portfolio = () => {
+const Portfolio = ({ onSelectProject }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState({});
   const [isAnimating, setIsAnimating] = useState({});
   const [isMobile, setIsMobile] = useState(false);
@@ -267,6 +284,14 @@ const Portfolio = () => {
                   >
                     View Code
                   </a>
+                  {item.isCaseStudy && (
+                    <button
+                      onClick={() => onSelectProject(item.caseStudyId)}
+                      className="inline-flex items-center justify-center px-5 py-2 text-sm font-bold rounded-full bg-gradient-to-r from-rose-500 to-rose-600 hover:from-rose-600 hover:to-rose-700 text-white shadow-lg shadow-rose-900/40 transition-all duration-300 hover:scale-105 active:scale-95"
+                    >
+                      View Case Study
+                    </button>
+                  )}
                 </div>
               </div>
             </article>
