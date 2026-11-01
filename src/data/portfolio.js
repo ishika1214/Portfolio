@@ -203,7 +203,7 @@ export const projects = [
       "pgvector",
       "Semantic search",
     ],
-    live: "https://aesthetic-notes-git-devlop-ishika1214s-projects.vercel.app/",
+    live: "https://aesthetic-notes-zeta.vercel.app",
     code: "https://github.com/ishika1214/AestheticNotes-Backend",
     caseStudy: {
       overview:
