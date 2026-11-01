@@ -1,120 +1,28 @@
 import React from "react";
-import html from "../assets/html.png";
-import css from "../assets/css.png";
-import javascript from "../assets/javascript.png";
-import reactImage from "../assets/react.png";
-import nextjs from "../assets/nextjs.png";
-import nestjs from "../assets/nestjs.png";
-import github from "../assets/github.png";
-import tailwind from "../assets/tailwind.png";
-import ts1 from "../assets/ts1.png"
-import redux1 from "../assets/redux1.png"
-import prisma1 from "../assets/prisma1.png"
-import postgres from "../assets/postgres.png"
+import { skills } from "../data/portfolio";
+import { IconTile, Reveal, Section, TagList } from "./ui";
 
 const Skills = () => {
-  const techs = [
-    {
-      id: 1,
-      src: html,
-      title: "HTML",
-      style: "shadow-orange-500",
-    },
-    {
-      id: 2,
-      src: css,
-      title: "CSS",
-      style: "shadow-blue-500",
-    },
-    {
-      id: 3,
-      src: javascript,
-      title: "JavaScript",
-      style: "shadow-yellow-500",
-    },
-    {
-      id: 4,
-      src: ts1,
-      title: "TypeScript",
-      style: "shadow-blue-600",
-    },
-    {
-      id: 5,
-      src: reactImage,
-      title: "React",
-      style: "shadow-white",
-    },
-    {
-      id: 6,
-      src: nextjs,
-      title: "Next JS",
-      style: "shadow-sky-400",
-    },
-    {
-      id: 7,
-      src: tailwind,
-      title: "Tailwind",
-      style: "shadow-pink-400",
-    },
-    {
-      id: 8,
-      src: nestjs,
-      title: "Nest js",
-      style: "shadow-gray-400",
-    },
-    {
-      id: 9,
-      src: redux1,
-      title: "Redux",
-      style: "shadow-purple-400",
-    },
-    {
-      id: 10,
-      src: prisma1,
-      title: "Prisma",
-      style: "shadow-gray-400",
-    },
-    {
-      id: 10,
-      src: postgres,
-      title: "Postgres",
-      style: "shadow-gray-400",
-    },
-    {
-      id: 11,
-      src: github,
-      title: "GitHub",
-      style: "shadow-gray-400",
-    },
-  ];
-
   return (
-    <div
-      name="skills"
-      className="bg-gradient-to-b from-gray-800 to-black w-full md:h-screen"
+    <Section
+      id="skills"
+      index="04"
+      eyebrow="Skills"
+      title="Technical toolkit"
+      intro="The languages, frameworks and services I use day to day, grouped by where they sit in the stack."
     >
-      <div className="max-w-screen-lg mx-auto p-4 flex flex-col justify-center w-full md:h-full text-white">
-        <div>
-          <p className="text-2xl font-semibold tracking-[0.3em] text-rose-400 uppercase mb-2">
-            Skills
-          </p>
-       
-          <p className="pb-6">These are the technologies I've worked with</p>
-        </div>
-
-        <div className="w-full grid grid-cols-2 sm:grid-cols-5 gap-8 text-center py-8  px-12 sm:px-0">
-          {techs.map(({ id, src, title, style }) => (
-            <div
-              key={id}
-              className={`shadow-md hover:scale-105 duration-500 py-2 rounded-lg ${style}`}
-            >
-              <img src={src} alt="" className="w-8 mx-auto md:w-20" />
-              <p className="mt-4">{title}</p>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {skills.map(({ category, icon, items }, i) => (
+          <Reveal key={category} delay={i * 60} className="surface p-6 hover:border-white/[0.14]">
+            <div className="flex items-center gap-3">
+              <IconTile icon={icon} />
+              <h3 className="font-semibold text-white">{category}</h3>
             </div>
-          ))}
-        </div>
+            <TagList items={items} className="mt-5" />
+          </Reveal>
+        ))}
       </div>
-    </div>
+    </Section>
   );
 };
 

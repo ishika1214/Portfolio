@@ -1,98 +1,66 @@
 import React from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { HiOutlineMail } from "react-icons/hi";
-import { BsFillPersonLinesFill } from "react-icons/bs";
+import { FiArrowUp, FiFileText, FiMail } from "react-icons/fi";
+import { links as profileLinks, profile } from "../data/portfolio";
 
+const links = [
+  { id: 1, icon: FaLinkedin, name: "LinkedIn", href: profileLinks.linkedin, external: true },
+  { id: 2, icon: FaGithub, name: "GitHub", href: profileLinks.github, external: true },
+  { id: 3, icon: FiMail, name: "Email", href: `mailto:${profileLinks.email}` },
+  { id: 4, icon: FiFileText, name: "Resume", href: profileLinks.resume, download: true },
+];
+
+const linkProps = (item) => ({
+  href: item.href,
+  ...(item.download ? { download: true } : {}),
+  ...(item.external ? { target: "_blank", rel: "noreferrer" } : {}),
+});
+
+const iconButton =
+  "flex h-10 w-10 items-center justify-center rounded-full text-gray-500 transition-all hover:-translate-y-0.5 hover:bg-white/[0.06] hover:text-rose-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400";
+
+// Fixed social rail on wide screens, plus a site footer that carries the same links everywhere.
 const SocialLinks = () => {
-  const links = [
-    {
-      id: 1,
-      child: (
-        <>
-          LinkedIn <FaLinkedin size={30} />
-        </>
-      ),
-      icon: <FaLinkedin size={30} />,
-      name: "LinkedIn",
-      href: "https://www.linkedin.com/in/ishika-kumari?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-      style: "rounded-tr-md bg-sky-900",
-    },
-    {
-      id: 2,
-      child: (
-        <>
-          Github <FaGithub size={30} />
-        </>
-      ),
-      icon: <FaGithub size={30} />,
-      name: "Github",
-      href: "https://github.com/ishika1214",
-      style: "rounded-tr-md bg-gray-900",
-    },
-    {
-      id: 3,
-      child: (
-        <>
-          Mail <HiOutlineMail size={30} />
-        </>
-      ),
-      icon: <HiOutlineMail size={30} />,
-      name: "Mail",
-      href: "mailto:kumariishika874@gmail.com",
-      style: "rounded-tr-md bg-red-900",
-    },
-    {
-      id: 4,
-      child: (
-        <>
-          Resume <BsFillPersonLinesFill size={30} />
-        </>
-      ),
-      icon: <BsFillPersonLinesFill size={30} />,
-      name: "Resume",
-      href: "https://ishika1214.github.io/Portfolio/resume.pdf",
-      style: "rounded-br-md",
-      download: true,
-    },
-  ];
   return (
     <>
-      <div className="hidden lg:flex flex-col top-[35%] left-0 fixed">
-        <ul>
-          {links.map((item) => (
-            <li
-              key={item.id}
-              className={`flex justify-between item-center w-40 h-14 px-4 ml-[-100px] hover:ml-[-10px] hover:rounded-md duration-300 bg-gray-500 ${item.style}`}
-            >
-              <a
-                href={item.href}
-                className="flex justify-between items-center w-full text-white"
-                download={item?.download}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {item.child}
+      <div className="fixed bottom-0 left-6 z-20 hidden flex-col items-center gap-1 xl:flex">
+        <ul className="flex flex-col gap-1">
+          {links.map(({ id, icon: Icon, name, ...item }) => (
+            <li key={id}>
+              <a {...linkProps(item)} aria-label={name} title={name} className={iconButton}>
+                <Icon size={18} aria-hidden="true" />
               </a>
             </li>
           ))}
         </ul>
+        <span aria-hidden="true" className="mt-3 h-24 w-px bg-gradient-to-b from-white/20 to-transparent" />
       </div>
-      <div className="flex justify-around md:hidden pl-1 pr-1 bg-gray-800 p-5 border-t-2 border-gray-500">
-        {links.map((item) => (
-          <div key={item.id} className="p-2 bg-slate-900 rounded-sm">
-            <a
-              href={item.href}
-              className="flex rounded-none justify-between items-center w-full text-white"
-              download={item?.download}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {item.icon}
-            </a>
 
+      <footer className="border-t border-white/[0.06]">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 py-10 sm:flex-row sm:px-8">
+          <div className="text-center sm:text-left">
+            <p className="font-semibold text-white">{profile.name}</p>
+            <p className="mt-1 text-sm text-gray-500">
+              {profile.title} · © {new Date().getFullYear()}
+            </p>
           </div>
-        ))}
-      </div>
+          <div className="flex items-center gap-1">
+            <ul className="flex gap-1">
+              {links.map(({ id, icon: Icon, name, ...item }) => (
+                <li key={id}>
+                  <a {...linkProps(item)} aria-label={name} title={name} className={iconButton}>
+                    <Icon size={18} aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <span aria-hidden="true" className="mx-2 h-6 w-px bg-white/10" />
+            <a href="#home" aria-label="Back to top" title="Back to top" className={iconButton}>
+              <FiArrowUp size={18} aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+      </footer>
     </>
   );
 };
