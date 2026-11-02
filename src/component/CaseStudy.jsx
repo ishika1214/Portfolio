@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FiArrowLeft, FiExternalLink, FiGithub } from "react-icons/fi";
+import { FiArrowLeft, FiExternalLink, FiGithub, FiPlayCircle } from "react-icons/fi";
 import Lightbox from "./Lightbox";
 import { BrowserFrame, Highlighted, Pending, TagList, buttonStyles } from "./ui";
 
@@ -73,16 +73,35 @@ const CaseStudy = ({ project, onBack }) => {
           </div>
         </header>
 
-        <button
-          type="button"
-          onClick={() => setLightboxIndex(0)}
-          className="block w-full rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
-          aria-label={`Open ${project.title} screenshots`}
-        >
-          <BrowserFrame label={project.live ? new URL(project.live).host : null}>
-            <img src={project.cover} alt={project.images[0].caption} className="w-full" />
-          </BrowserFrame>
-        </button>
+        {project.video ? (
+          <figure>
+            <BrowserFrame label={project.live ? new URL(project.live).host : null}>
+              <video
+                src={project.video.src}
+                poster={project.video.poster}
+                controls
+                playsInline
+                preload="metadata"
+                className="aspect-video w-full bg-black"
+              />
+            </BrowserFrame>
+            <figcaption className="mt-3 flex items-center gap-2 text-sm text-gray-500">
+              <FiPlayCircle aria-hidden="true" className="text-rose-400" /> {project.video.caption}. Turn on your
+              sound.
+            </figcaption>
+          </figure>
+        ) : (
+          <button
+            type="button"
+            onClick={() => setLightboxIndex(0)}
+            className="block w-full rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-400"
+            aria-label={`Open ${project.title} screenshots`}
+          >
+            <BrowserFrame label={project.live ? new URL(project.live).host : null}>
+              <img src={project.cover} alt={project.images[0].caption} className="w-full" />
+            </BrowserFrame>
+          </button>
+        )}
 
         <div className="mt-14">
           <Block title="Overview" value={cs.overview} />

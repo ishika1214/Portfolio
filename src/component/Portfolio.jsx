@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FiArrowRight, FiExternalLink, FiGithub, FiMaximize2 } from "react-icons/fi";
+import { FiArrowRight, FiExternalLink, FiGithub, FiMaximize2, FiPlayCircle } from "react-icons/fi";
 import { projects } from "../data/portfolio";
 import Lightbox from "./Lightbox";
 import { BrowserFrame, Reveal, Section, TagList, buttonStyles } from "./ui";
@@ -82,6 +82,15 @@ const Portfolio = ({ onSelectProject }) => {
                   >
                     Read case study <FiArrowRight aria-hidden="true" />
                   </button>
+                  {project.video && (
+                    <button
+                      type="button"
+                      onClick={() => onSelectProject(project.id)}
+                      className={buttonStyles.small}
+                    >
+                      <FiPlayCircle aria-hidden="true" /> Watch demo
+                    </button>
+                  )}
                   {project.live && (
                     <a href={project.live} target="_blank" rel="noreferrer" className={buttonStyles.small}>
                       <FiExternalLink aria-hidden="true" /> Live demo

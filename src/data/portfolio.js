@@ -15,15 +15,21 @@ import {
   FiTrendingUp,
 } from "react-icons/fi";
 
-// Aesthetic Notes images
-import aestheticLanding from "../assets/aestheticNotes/LandingPage.png";
-import aestheticDashboard from "../assets/aestheticNotes/dashboard.png";
-import aestheticSummarize from "../assets/aestheticNotes/summarize.png";
-import aestheticSummarize1 from "../assets/aestheticNotes/summarize1.png";
-import aestheticAI from "../assets/aestheticNotes/AI-Companion.png";
-import aestheticRewrite from "../assets/aestheticNotes/professionalRewrite.png";
-import aestheticDiary from "../assets/aestheticNotes/Diary.png";
-import aestheticTags from "../assets/aestheticNotes/tags.png";
+// Aesthetic Notes images and walkthrough video
+import aestheticLanding from "../assets/aestheticNotes/landing.jpg";
+import aestheticSignIn from "../assets/aestheticNotes/sign-in.jpg";
+import aestheticDashboard from "../assets/aestheticNotes/dashboard.jpg";
+import aestheticNotesGrid from "../assets/aestheticNotes/dashboard-notes.jpg";
+import aestheticEditor from "../assets/aestheticNotes/editor.jpg";
+import aestheticStudio from "../assets/aestheticNotes/ai-studio.jpg";
+import aestheticSummary from "../assets/aestheticNotes/ai-summary.jpg";
+import aestheticRewrite from "../assets/aestheticNotes/ai-rewrite.jpg";
+import aestheticNovel from "../assets/aestheticNotes/novel.jpg";
+import aestheticDiary from "../assets/aestheticNotes/diary.jpg";
+import aestheticCompanion from "../assets/aestheticNotes/ai-companion.jpg";
+import aestheticDark from "../assets/aestheticNotes/dashboard-dark.jpg";
+import aestheticVideo from "../assets/aestheticNotes/walkthrough.mp4";
+import aestheticVideoPoster from "../assets/aestheticNotes/walkthrough-poster.jpg";
 
 // Task Manager images
 import taskManager1 from "../assets/taskManager/taskmanager1.png";
@@ -180,53 +186,76 @@ export const projects = [
   {
     id: "aesthetic-notes",
     title: "Aesthetic Notes",
-    tagline: "AI-enhanced writing and knowledge workspace",
+    tagline: "AI-powered writing and knowledge workspace",
     summary:
-      "A writing studio with built-in AI tools to summarize notes, rewrite text and chat with your own content, powered by Google's Gemini.",
+      "A calm writing space for notes, novels and diaries, with Gemini-powered tools to summarize, polish and organize your writing, and an AI companion that answers questions from your own notes.",
     cover: aestheticLanding,
+    video: {
+      src: aestheticVideo,
+      poster: aestheticVideoPoster,
+      caption: "2-minute narrated walkthrough of the app",
+    },
     images: [
       { src: aestheticLanding, caption: "Landing page" },
-      { src: aestheticDashboard, caption: "Notebook-style writing interface" },
-      { src: aestheticSummarize, caption: "AI summarization" },
-      { src: aestheticSummarize1, caption: "AI insights" },
-      { src: aestheticAI, caption: "AI companion: chat with your notes" },
-      { src: aestheticRewrite, caption: "Professional rewrite" },
-      { src: aestheticDiary, caption: "Diary mode" },
-      { src: aestheticTags, caption: "Tags and notifications" },
+      { src: aestheticSignIn, caption: "Sign in and sign up" },
+      { src: aestheticDashboard, caption: "Dashboard with quick create for notes, novels and diaries" },
+      { src: aestheticNotesGrid, caption: "Pinned notes and colour-coded note cards" },
+      { src: aestheticEditor, caption: "Rich-text editor with tags" },
+      { src: aestheticStudio, caption: "AI Studio: one-click writing tools" },
+      { src: aestheticSummary, caption: "AI summary with key points and action items, previewed before applying" },
+      { src: aestheticRewrite, caption: "Professional polish: before and after" },
+      { src: aestheticNovel, caption: "Novel mode: chapters in a book-style view" },
+      { src: aestheticDiary, caption: "Diary mode: date-stamped entries" },
+      { src: aestheticCompanion, caption: "AI companion answering from the user's own notes" },
+      { src: aestheticDark, caption: "Dark mode" },
     ],
     tech: [
+      "React",
+      "TypeScript",
+      "Redux Toolkit",
+      "Tailwind CSS",
+      "Node.js",
+      "Express",
+      "MongoDB",
       "Gemini",
-      "LangChain",
-      "LangGraph",
       "RAG",
-      "PostgreSQL",
-      "pgvector",
-      "Semantic search",
+      "Embeddings",
     ],
     live: "https://aesthetic-notes-zeta.vercel.app",
     code: "https://github.com/ishika1214/AestheticNotes-Backend",
     caseStudy: {
       overview:
-        "Aesthetic Notes is a distraction-free writing workspace with AI tools built in. Users write in a notebook-style interface and can summarize, rewrite and extract insights from their notes, or chat directly with their own content.",
-      problem: null,
-      solution: null,
-      contribution: null,
+        "Aesthetic Notes is a distraction-free writing workspace with AI built in. Users write notes, chapter-based novels and date-stamped diaries, then use the AI Studio to summarize, retitle, tag, polish or extract tasks, or ask the AI companion questions that it answers from their own notes.",
+      problem:
+        "Notes pile up across apps and quickly become hard to search, and most AI writing tools rewrite text directly with no chance to review the change first. General chatbots also know nothing about what you have written yourself.",
+      solution:
+        "One calm workspace for every kind of writing, with AI tools that always show a side-by-side preview before anything changes. Every note is embedded when it is saved, so the AI companion can retrieve the most relevant notes and answer from the user's own words.",
+      contribution:
+        "Designed and built the whole product on my own: UI/UX design, the React front end, the Express and MongoDB API, the Gemini integration and RAG pipeline, and deployment. I also produced the narrated product walkthrough video.",
       architecture: [
-        "LLM features powered by Google Gemini, orchestrated with LangChain / LangGraph.",
-        "Retrieval-augmented generation (RAG) so AI responses are grounded in the user's own notes.",
-        "Embeddings stored in PostgreSQL with pgvector to support semantic search.",
-        "Background processing for long-running AI tasks.",
+        "React 19 and TypeScript front end with Redux Toolkit for state, Tailwind CSS v4 for styling and TipTap for rich-text editing.",
+        "Express 5 REST API with JWT authentication, bcrypt-hashed passwords and MongoDB via Mongoose.",
+        "Google Gemini 2.5 Flash for summarizing, titles, tags, rewriting, task extraction and formatting.",
+        "Retrieval-augmented generation (RAG): notes are embedded with gemini-embedding-001 when saved, and chat questions are matched to the closest notes by cosine similarity.",
+        "Embeddings are generated in the background after a save, so writing never waits on the AI.",
+        "Chat history is stored per user so the AI companion keeps the context of the conversation.",
       ],
       features: [
-        "Notebook-style, single-page focused writing interface",
-        "AI summarization, insights and professional rewrite",
-        "Chat with your own notes (AI companion)",
-        "Manual pagination with pages and chapters",
-        "Studio, Novel (chapter-based) and Diary (date-stamped) modes",
+        "Three writing modes: Notes, Novels (chapter by chapter) and Diaries (date-stamped entries)",
+        "Book-style page view for novels and diaries",
+        "AI Studio: summarize, generate a title, suggest tags, professional polish, extract tasks and clean up formatting",
+        "Side-by-side preview before any AI change is applied",
+        "AI companion that answers questions from your own notes",
+        "Search, type filters, tags, pinned and private or public notes",
         "Light and dark themes",
-        "Toast notifications for note actions (Sonner)",
+        "Narrated how-to-use walkthrough video on the landing page",
       ],
-      challenges: null,
+      challenges: [
+        "LLM output is not always valid JSON. The API extracts and validates the JSON block, and the front end normalizes list items the model returns as objects, so a bad response can never crash the UI.",
+        "Keeping AI answers grounded: the companion is only given the most relevant notes, retrieved by embedding similarity, and is told to say when the notes don't contain the answer.",
+        "Keeping saves fast: embeddings are generated asynchronously after the note is stored, so the writing experience never blocks on an AI call.",
+        "Producing the walkthrough video: a Playwright script drives the real app with an on-screen cursor, arrows and captions, Gemini text-to-speech provides the narration, and ffmpeg mixes the two into an MP4 that can be re-recorded whenever the UI changes.",
+      ],
     },
   },
   {
