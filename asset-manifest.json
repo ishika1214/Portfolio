@@ -1,34 +1,40 @@
 {
   "files": {
     "main.css": "/Portfolio/static/css/main.de67513d.css",
-    "main.js": "/Portfolio/static/js/main.a7a47848.js",
+    "main.js": "/Portfolio/static/js/main.90f3a271.js",
+    "static/media/walkthrough.mp4": "/Portfolio/static/media/walkthrough.b3001db70a4ce95e71c5.mp4",
     "static/media/mindSpace3.png": "/Portfolio/static/media/mindSpace3.a0c46b28d54709302ea6.png",
     "static/media/taskmanager1.png": "/Portfolio/static/media/taskmanager1.037cb7f94395043db969.png",
-    "static/media/summarize1.png": "/Portfolio/static/media/summarize1.70d44416579afe9d4a06.png",
-    "static/media/summarize.png": "/Portfolio/static/media/summarize.6f5c6ad5066c0b4554b9.png",
     "static/media/taskmanager2.png": "/Portfolio/static/media/taskmanager2.9340eea9139a66ae9c5e.png",
-    "static/media/professionalRewrite.png": "/Portfolio/static/media/professionalRewrite.bc5c2b0a4c8199e3c215.png",
-    "static/media/LandingPage.png": "/Portfolio/static/media/LandingPage.018878a5c48b83f2a49a.png",
-    "static/media/dashboard.png": "/Portfolio/static/media/dashboard.8284f0f04a0be73156f5.png",
-    "static/media/Diary.png": "/Portfolio/static/media/Diary.a4462f6f120c476f3164.png",
+    "static/media/landing.jpg": "/Portfolio/static/media/landing.7dace9dffb92ed35d7fd.jpg",
+    "static/media/ai-rewrite.jpg": "/Portfolio/static/media/ai-rewrite.d248aceec977644d38e6.jpg",
+    "static/media/ai-summary.jpg": "/Portfolio/static/media/ai-summary.e500db18146085360c52.jpg",
+    "static/media/dashboard.jpg": "/Portfolio/static/media/dashboard.1296b1f36d07903a91c6.jpg",
+    "static/media/sign-in.jpg": "/Portfolio/static/media/sign-in.6d791fc6d0b223dfe449.jpg",
     "static/media/taskmanager4.png": "/Portfolio/static/media/taskmanager4.92c9eab5ff0f61780d8a.png",
+    "static/media/dashboard-notes.jpg": "/Portfolio/static/media/dashboard-notes.427c115e452a351dcb13.jpg",
     "static/media/mindSpace4.png": "/Portfolio/static/media/mindSpace4.e816fa33e73e52f99f87.png",
     "static/media/mindSpace2.png": "/Portfolio/static/media/mindSpace2.8621503c55121c135e8e.png",
-    "static/media/AI-Companion.png": "/Portfolio/static/media/AI-Companion.ad2f6dbb08d5a39450aa.png",
+    "static/media/ai-studio.jpg": "/Portfolio/static/media/ai-studio.045a5086d65706bd18b3.jpg",
     "static/media/taskmanager3.png": "/Portfolio/static/media/taskmanager3.9b8cab4a7593580e96aa.png",
-    "static/media/tags.png": "/Portfolio/static/media/tags.cfe602dd3c331faee786.png",
     "static/media/mindSpace6.png": "/Portfolio/static/media/mindSpace6.48f14a36c62d601d1a2b.png",
     "static/media/taskmanager5.png": "/Portfolio/static/media/taskmanager5.37b82d49992b30090f35.png",
     "static/media/mindSpace1.png": "/Portfolio/static/media/mindSpace1.8e80004725a2cca91f31.png",
     "static/media/taskmanager6.png": "/Portfolio/static/media/taskmanager6.3bb984c526469b15ae2e.png",
+    "static/media/dashboard-dark.jpg": "/Portfolio/static/media/dashboard-dark.be4171942c12bbf044e0.jpg",
     "static/media/taskmanager7.png": "/Portfolio/static/media/taskmanager7.1daf542eb7f23ed73729.png",
     "static/media/mindSpace5.png": "/Portfolio/static/media/mindSpace5.314593bf940048188990.png",
+    "static/media/editor.jpg": "/Portfolio/static/media/editor.284f2813e11ef7871719.jpg",
+    "static/media/novel.jpg": "/Portfolio/static/media/novel.5e5cc79db1740df69798.jpg",
+    "static/media/ai-companion.jpg": "/Portfolio/static/media/ai-companion.367da0172882bf3cfd98.jpg",
+    "static/media/diary.jpg": "/Portfolio/static/media/diary.c5feea5a81290a058d4b.jpg",
+    "static/media/walkthrough-poster.jpg": "/Portfolio/static/media/walkthrough-poster.f48e30a655b92f090e8a.jpg",
     "index.html": "/Portfolio/index.html",
     "main.de67513d.css.map": "/Portfolio/static/css/main.de67513d.css.map",
-    "main.a7a47848.js.map": "/Portfolio/static/js/main.a7a47848.js.map"
+    "main.90f3a271.js.map": "/Portfolio/static/js/main.90f3a271.js.map"
   },
   "entrypoints": [
     "static/css/main.de67513d.css",
-    "static/js/main.a7a47848.js"
+    "static/js/main.90f3a271.js"
   ]
 }
